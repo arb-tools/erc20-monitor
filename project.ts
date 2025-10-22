@@ -65,6 +65,18 @@ const project: EthereumProject = {
         file: "./dist/index.js",
         handlers: [
           {
+            kind: EthereumHandlerKind.Call,
+            handler: "handleTransaction",
+            filter: {
+              /**
+               * The function can either be the function fragment or signature
+               * function: '0x095ea7b3'
+               * function: '0x7ff36ab500000000000000000000000000000000000000000000000000000000'
+               */
+              function: "approve(address spender, uint256 rawAmount)",
+            },
+          },
+          {
             kind: EthereumHandlerKind.Event,
             handler: "handleLog",
             filter: {
